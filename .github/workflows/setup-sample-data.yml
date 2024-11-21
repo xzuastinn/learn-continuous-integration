@@ -1,0 +1,26 @@
+name: Setup Sample Data
+
+on:
+  push:
+    branches:
+      - deploy
+
+jobs:
+  setup-sample-data:
+    runs-on: cs5500-self-hosted
+    steps:
+      # Step 1: Checkout the repository
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      # Step 2: Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Step 3: Remove existing database entries
+      - name: Remove Existing Data
+        run: npm run remove-sample-data
+
+      # Step 4: Insert sample data into the database
+      - name: Insert Sample Data
+        run: npm run insert-sample-data
