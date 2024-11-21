@@ -19,8 +19,7 @@ jobs:
 
       # Step 3: Remove existing database entries
       - name: Remove Existing Data
-        run: npm run remove-sample-data
-
+        run: npm run remove-sample-data -- mongodb://localhost:27017/my_database_name
       # Step 4: Insert sample data into the database
       - name: Insert Sample Data
-        run: npm run insert-sample-data
+        run: npm run insert-sample-data -- mongodb://localhost:27017/my_database_name
